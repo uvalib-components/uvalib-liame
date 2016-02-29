@@ -20,29 +20,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <p>An example of <code>&lt;uvalib-liame&gt;</code>:</p>
 
-    <p>Make words! <button id="saybtn">Say Something</button></p>
-    <p>Make lasers! <button id="laserbtn">Fire lasers</button></p>
-
-    <uvalib-liame author='{"name": "Lord Meowser", "image": "http://lorempixel.com/g/300/200/cats/"}' fancy>
-      <h2>Hello uvalib-liame</h2>
-    </uvalib-liame>
-
-    <script>
-      var seedElement = document.querySelector('uvalib-liame');
-
-      document.querySelector('#saybtn').addEventListener('click', function() {
-        alert(seedElement.sayHello('Hallo!'));
-      });
-
-      document.querySelector('#laserbtn').addEventListener('click', function() {
-        seedElement.fireLasers();
-      });
-
-      document.addEventListener("uvalib-liame-lasers", function(e) {
-        console.log(e.detail.sound);
-      });
-
-    </script>
+    <uvalib-liame rid="z4chd">Doug Chestnut</uvalib-liame>
+    <uvalib-liame rid="z4chd" subject="Doug" body="Just a test">Doug Chestnut</uvalib-liame>
 
   </body>
 </html>
