@@ -49,6 +49,12 @@ Example:
         if (this.body) this.rest += "body=" + this.body; 
       },
 
+      attached: function() {
+        if (this.getContentChildNodes().length == 0) {
+          var content = document.createTextNode(this.eid+"@virginia.edu");
+          Polymer.dom(this).appendChild(content);
+        }
+      },
     });
   </script>
 </dom-module>
