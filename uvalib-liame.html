@@ -5,7 +5,7 @@ An element that is an email obfuscator.
 
 Example:
 
-    <uvalib-liame rid="z4chd">Doug Chestnut</uvalib-liame>
+    <div is="uvalib-liame" rid="z4chd">Doug Chestnut</div>
 
 @demo demo/index.html
 @hero hero.svg
@@ -13,7 +13,7 @@ Example:
 
 <dom-module id="uvalib-liame">
   <template>
-    <a href="mailto:{{eid}}@virginia.edu{{rest}}"><content></content></a>
+    <a id="link" href="mailto:{{eid}}@virginia.edu{{rest}}"><content></content></a>
   </template>
 
   <script>
@@ -26,6 +26,11 @@ Example:
          * `rid` is the email id (at virginia.edu) in reverse
          */
         rid: String,
+
+        /**
+         * `overwrite` is a flag that when present will ignore children of this element.  Used to support older browsers.
+         */
+        overwrite: Boolean,
 
         /**
          * `subject` is optional and specifies the subject line to be filled out in the email
@@ -48,9 +53,13 @@ Example:
           if (this.body) this.rest += "&"; 
         }
         if (this.body) this.rest += "body=" + this.body; 
-        if (this.getContentChildNodes().length == 0) {
+        if ( this.overwrite || this.getContentChildNodes().length == 0) {
           var content = document.createTextNode(this.eid+"@virginia.edu");
-          Polymer.dom(this).appendChild(content);
+          if(this.overwrite) {
+            this.$.link.replaceChild(content, this.$.link.childNodes[0]);
+          } else {
+            Polymer.dom(this).appendChild(content);
+          } 
         }
       },
 
