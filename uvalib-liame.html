@@ -33,6 +33,11 @@ Example:
         overwrite: Boolean,
 
         /**
+         * `text` is optional and when present will replace the child text element with its value
+         */
+        text: String,
+
+        /**
          * `subject` is optional and specifies the subject line to be filled out in the email
          */
         subject: String,
@@ -55,6 +60,7 @@ Example:
         if (this.body) this.rest += "body=" + this.body; 
         if ( this.overwrite || this.getContentChildNodes().length == 0) {
           var content = document.createTextNode(this.eid+"@virginia.edu");
+          if(this.text) content = document.createTextNode(this.text);
           if(this.overwrite) {
             this.$.link.replaceChild(content, this.$.link.childNodes[0]);
           } else {
