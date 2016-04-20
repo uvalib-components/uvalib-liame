@@ -19,7 +19,7 @@ Example:
       }
     </style>
 
-    <a id="link" href="mailto:{{eid}}@virginia.edu{{rest}}"><content></content></a>
+    <a id="link" href="mailto:{{eid}}@{{domain}}{{rest}}"><content></content></a>
   </template>
 
   <script>
@@ -28,6 +28,14 @@ Example:
       extends: 'div',
 
       properties: {
+        /**
+         * `domain` is the domain on the other side of the at sign
+         */
+        domain: {
+          type: String,
+          value: "virginia.edu"
+        },
+
         /**
          * `rid` is the email id (at virginia.edu) in reverse
          */
@@ -65,7 +73,7 @@ Example:
         }
         if (this.body) this.rest += "body=" + this.body; 
         if ( this.overwrite || this.getContentChildNodes().length == 0) {
-          var content = document.createTextNode(this.eid+"@virginia.edu");
+          var content = document.createTextNode(this.eid+"@"+this.domain);
           if(this.text) content = document.createTextNode(this.text);
           if(this.overwrite) {
             this.$.link.replaceChild(content, this.$.link.childNodes[0]);
