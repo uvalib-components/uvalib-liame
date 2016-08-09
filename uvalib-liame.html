@@ -18,6 +18,9 @@ Example:
       :host {
         display: inline-block;
       }
+      #link {
+        @apply(--uvalib-liame-link);
+      }
     </style>
 
     <a id="link" href="mailto:{{eid}}@{{domain}}{{rest}}"><content></content></a>
@@ -26,7 +29,6 @@ Example:
   <script>
     Polymer({
       is: 'uvalib-liame',
-//      extends: 'div',
 
       properties: {
         /**
