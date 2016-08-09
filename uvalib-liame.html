@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../uvalib-theme/uvalib-theme.html">
 
 <!--
 An element that is an email obfuscator.
@@ -25,7 +26,7 @@ Example:
   <script>
     Polymer({
       is: 'uvalib-liame',
-      extends: 'div',
+//      extends: 'div',
 
       properties: {
         /**
@@ -69,9 +70,9 @@ Example:
         this.eid = this.rid.split("").reverse().join("");
         if (this.subject) {
           this.rest = "?subject=" + this.subject;
-          if (this.body) this.rest += "&"; 
+          if (this.body) this.rest += "&";
         }
-        if (this.body) this.rest += "body=" + this.body; 
+        if (this.body) this.rest += "body=" + this.body;
         if ( this.overwrite || this.getContentChildNodes().length == 0) {
           var content = document.createTextNode(this.eid+"@"+this.domain);
           if(this.text) content = document.createTextNode(this.text);
@@ -79,7 +80,7 @@ Example:
             this.$.link.replaceChild(content, this.$.link.childNodes[0]);
           } else {
             Polymer.dom(this).appendChild(content);
-          } 
+          }
         }
       },
 

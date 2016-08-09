@@ -14,31 +14,45 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <title>uvalib-liame Demo</title>
     <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
     <link rel="import" href="../uvalib-liame.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+
   </head>
   <body unresolved>
 
-    <p>An example of <code>&lt;div is="uvalib-liame" rid="z4chd"&gt;Doug Chestnut&lt;/div&gt;</code>:</p>
-    <div is="uvalib-liame" rid="z4chd">Doug Chestnut</div>
-    <br />
+    <div class="vertical-section-container centered" style="max-width: 95%;">
+      <h3>Simple usage of uvalib-liame</h3>
+      <demo-snippet>
+        <template>
+          <uvalib-liame rid="z4chd"></uvalib-liame> </br>
+          <uvalib-liame rid="z4chd">Doug Chestnut</uvalib-liame> </br>
+          <uvalib-liame rid="z4chd" overwrite>dhc4z at virginia dot edu</uvalib-liame> </br>
+          <uvalib-liame rid="z4chd" overwrite text="Contact Doug">dhc4z at virginia dot edu</uvalib-liame>
+        </template>
+      </demo-snippet>
+    </div>
 
-    <p>An example of <code>&lt;div is="uvalib-liame" domain="eservices.virginia.edu" rid="z4chd"&gt;Doug Chestnut&lt;/div&gt;</code>:</p>
-    <div id="domain" is="uvalib-liame" domain="eservices.virginia.edu" rid="z4chd">Doug Chestnut</div>
-    <br />
+    <div class="vertical-section-container centered" style="max-width: 95%;">
+      <h3>Custom domain usage</h3>
+      <demo-snippet>
+        <template>
+          <uvalib-liame domain="eservices.virginia.edu" rid="z4chd">Doug Chestnut</uvalib-liame>
+        </template>
+      </demo-snippet>
+    </div>
 
-    <p>An example of <code>&lt;div is="uvalib-liame" rid="z4chd" subject="Doug" body="Just a test"&gt;Doug Chestnut&lt;/div&gt;</code>:</p>
-    <div is="uvalib-liame" rid="z4chd" subject="Doug" body="Just a test">Doug Chestnut</div>
-    <br />
-
-    <p>An example of <code>&lt;div is="uvalib-liame" rid="z4chd"&gt;&lt;/div&gt;</code>:</p>
-    <div is="uvalib-liame" rid="z4chd"></div>
-    <br />
-
-    <p>An example of <code>&lt;div is="uvalib-liame" rid="z4chd" overwrite&gt;dhc4z at virginia dot edu&lt;/div&gt;</code>:</p>
-    <div is="uvalib-liame" rid="z4chd" overwrite>dhc4z at virginia dot edu</div>
-
-    <p>An example of <code>&lt;div is="uvalib-liame" rid="z4chd" overwrite text="Contact Doug"&gt;dhc4z at virginia dot edu&lt;/div&gt;</code>:</p>
-    <div is="uvalib-liame" rid="z4chd" overwrite text="Contact Doug">dhc4z at virginia dot edu</div>
+    <div class="vertical-section-container centered" style="max-width: 95%;">
+      <h3>Prefilled subject and body usage</h3>
+      <demo-snippet>
+        <template>
+          <uvalib-liame rid="z4chd" subject="hello" body="Greetings Doug!">Doug Chestnut</uvalib-liame>
+        </template>
+      </demo-snippet>
+    </div>
 
   </body>
 </html>
