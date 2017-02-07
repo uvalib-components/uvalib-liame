@@ -18,12 +18,6 @@
     "/test/"
   ],
   "dependencies": {
-    "polymer": "polymer/polymer#^1.6.1",
-    "uvalib-theme": "uvalib-components/uvalib-theme#master"
-  },
-  "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#^1.1.7",
-    "web-component-tester": "^4.3.3",
-    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.2.5"
+    "uvalib-elements": "uvalib-components/uvalib-elements#latest"
   }
 }
