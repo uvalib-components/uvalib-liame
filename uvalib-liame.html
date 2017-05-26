@@ -44,8 +44,13 @@ Example:
 
         /**
          * `rid` is the email id (at virginia.edu) in reverse
+         * This is a required attribute for this element
          */
-        rid: String,
+        rid: {
+          type: String,
+          value: null,
+          observer: '_ridChanged'
+        },
 
         /**
          * `overwrite` is a flag that when present will ignore children of this element.  Used to support older browsers.
@@ -69,25 +74,30 @@ Example:
       },
 
       // Element Lifecycle
-
       ready: function() {
-        this.rest = "";
-        this.eid = this.rid.split("").reverse().join("");
-        if (this.subject) {
-          this.rest = "?subject=" + this.subject;
-          if (this.body) this.rest += "&";
-        }
-        if (this.body) this.rest += "body=" + this.body;
-        if ( this.overwrite || this.getContentChildNodes().length == 0) {
-          var content = document.createTextNode(this.eid+"@"+this.domain);
-          if(this.text) content = document.createTextNode(this.text);
-          if(this.overwrite) {
-            this.$.link.replaceChild(content, this.$.link.childNodes[0]);
-          } else {
-            Polymer.dom(this).appendChild(content);
+        this._ridChanged();
+      },
+
+      _ridChanged: function(){
+        if (this.rid) {
+          this.rest = "";
+          this.eid = this.rid.split("").reverse().join("");
+          if (this.subject) {
+            this.rest = "?subject=" + this.subject;
+            if (this.body) this.rest += "&";
+          }
+          if (this.body) this.rest += "body=" + this.body;
+          if ( this.overwrite || this.getContentChildNodes().length == 0) {
+            var content = document.createTextNode(this.eid+"@"+this.domain);
+            if(this.text) content = document.createTextNode(this.text);
+            if(this.overwrite) {
+              this.$.link.replaceChild(content, this.$.link.childNodes[0]);
+            } else {
+              Polymer.dom(this).appendChild(content);
+            }
           }
         }
-      },
+      }
 
     });
   </script>
