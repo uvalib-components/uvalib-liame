@@ -26,7 +26,7 @@ Example:
       }
     </style>
 
-    <a id="link" href="mailto:{{eid}}@{{domain}}{{rest}}"><content></content></a>
+    <a id="link" href="mailto:[[eid]]@[[domain]][[rest]]">[[_text]]</a>
   </template>
 
   <script>
@@ -71,6 +71,8 @@ Example:
          * `body` is optionl and specifies the default text to be filled out in the body of the email
          */
         body: String,
+
+        _text: String
       },
 
       // Element Lifecycle
@@ -87,6 +89,15 @@ Example:
             if (this.body) this.rest += "&";
           }
           if (this.body) this.rest += "body=" + this.body;
+
+          var childText = this.getEffectiveTextContent();
+          this._text = (childText && !this.overwrite)?
+              childText:
+              (this.text)?
+                  this.text:
+                  this.eid+"@"+this.domain;
+
+          /*
           if ( this.overwrite || this.getContentChildNodes().length == 0) {
             var content = document.createTextNode(this.eid+"@"+this.domain);
             if(this.text) content = document.createTextNode(this.text);
@@ -96,6 +107,7 @@ Example:
               Polymer.dom(this).appendChild(content);
             }
           }
+          */
         }
       }
 
