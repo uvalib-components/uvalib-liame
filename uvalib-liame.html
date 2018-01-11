@@ -14,18 +14,19 @@ Example:
 
 <dom-module id="uvalib-liame">
   <template>
-    <style is="custom-style" include="uvalib-theme">
+    <custom-style>
+    <style include="uvalib-theme">
       :host {
         display: inline-block;
         text-decoration: underline;
       }
       #link {
         color: var(--uvalib-liame-link-color,currentcolor);
-        @apply(--uvalib-liame-link);
+        @apply --uvalib-liame-link;
         text-decoration: none;
       }
     </style>
-
+    </custom-style>
     <a id="link" href="mailto:[[_eid]]@[[domain]][[_rest]]" aria-label="send email to [[_text]]">[[_text]]</a>
   </template>
 
