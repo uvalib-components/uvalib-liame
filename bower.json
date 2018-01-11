@@ -19,5 +19,8 @@
   ],
   "dependencies": {
     "uvalib-elements": "uvalib-components/uvalib-elements#master"
+  },
+  "resolutions": {
+    "lodash": "^4.17.4"
   }
 }

@@ -8,7 +8,7 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
@@ -22,9 +22,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <body>
 
     <!-- You can use the document as a place to set up your fixtures. -->
-    <test-fixture id="uvalib-liame-fixture">
+    <test-fixture id="basic">
       <template>
-        <uvalib-liame>
+        <uvalib-liame rid="yrarbil">
           <h2>uvalib-liame</h2>
         </uvalib-liame>
       </template>
@@ -33,38 +33,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <script>
       suite('<uvalib-liame>', function() {
 
-        var myEl;
-
-        setup(function() {
-          myEl = fixture('uvalib-liame-fixture');
+        test('instantiating the element works', function() {
+          var element = fixture('basic');
+          assert.equal(element.is, 'uvalib-liame');
         });
 
-        test('defines the "author" property', function() {
-          assert.equal(myEl.author.name, 'Dimitri Glazkov');
-          assert.equal(myEl.author.image, 'http://addyosmani.com/blog/wp-content/uploads/2013/04/unicorn.jpg');
-        });
-
-        test('says hello', function() {
-          assert.equal(myEl.sayHello(), 'uvalib-liame says, Hello World!');
-
-          var greetings = myEl.sayHello('greetings Earthlings');
-          assert.equal(greetings, 'uvalib-liame says, greetings Earthlings');
-        });
-
-        test('fires lasers', function(done) {
-          myEl.addEventListener('uvalib-liame-lasers', function(event) {
-            assert.equal(event.detail.sound, 'Pew pew!');
-            done();
-          });
-          myEl.fireLasers();
-        });
-
-        test('distributed children', function() {
-          var els = myEl.getContentChildren();
-          assert.equal(els.length, 1, 'one distributed node');
-          assert.equal(els[0], myEl.querySelector('h2'), 'content distributed correctly');
-        });
-
+        a11ySuite('basic');
       });
     </script>
 
